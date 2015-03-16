@@ -2,6 +2,7 @@ package mihai.ImagePDF;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -12,6 +13,7 @@ import sun.misc.BASE64Decoder;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class ImageTypes{
 	/**The resulting PDF*/
@@ -29,6 +31,8 @@ public class ImageTypes{
 	public void createPDF(String filename) throws IOException, DocumentException{
 		//Step 1
 		Document document = new Document();
+		//Step 2
+		PdfWriter.getInstance(document, new FileOutputStream(filename));
 		//Step 3
 		document.open();
 		//Step 4 Add a java.awt.image
